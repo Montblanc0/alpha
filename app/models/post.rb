@@ -15,8 +15,8 @@ class Post < ApplicationRecord
     validates :remote_image_url, unless: :storage?
   end
 
-  validates :image, file_size: { less_than_or_equal_to: 2.megabytes },   file_content_type: { allow: /^image\/.*/ }
-  
+  validates :image, file_size: { less_than_or_equal_to: 2.megabytes }, file_content_type: { allow: %r{^image/.*} }
+
   after_create_commit proc {
                         wait_for_processing_then do
                           broadcast_prepend_later_to 'posts', partial: 'posts/card', locals: { post: self }
@@ -42,5 +42,4 @@ class Post < ApplicationRecord
       end
     end
   end
-
 end
