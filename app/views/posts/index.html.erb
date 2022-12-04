@@ -1,0 +1,22 @@
+<%= turbo_stream_from "posts" %>
+<div data-controller="pagination" data-pagination-url-value="<%= posts_url %>"
+  data-pagination-page-value="<%= 2 %>" >
+  <div id="posts" class="columns is-multiline is-vcentered" data-controller="animation">
+    <% if @posts.empty? %>
+      <%= render 'layouts/empty' %>
+    <% else %>
+      <% @posts.each do |post| %>
+        <%= render 'posts/card', post: %>
+      <% end %>
+    <% end %>
+  </div>
+  <div data-pagination-target="scrollArea">
+    <div class="is-flex is-justify-content-center"></div>
+  </div>
+  <%= render 'layouts/pagination', arr: @posts %>
+</div>
+<%= link_to new_post_path, class: 'button is-red is-large is-circular', id: 'new-post' do %>
+  <span class="icon is-large">
+    <i class="fa-solid fa-plus"></i>
+  </span>
+<% end %>

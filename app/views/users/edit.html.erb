@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'user-content' do %>
+  <div class="columns is-centered is-mobile is-multiline">
+    <%= turbo_frame_tag 'user-edit' do %>
+      <%= render 'edit_profile' %>
+    <% end %>
+  </div>
+<% end %>

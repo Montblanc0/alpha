@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "user-content" do %>
+  <div data-controller="pagination" data-pagination-url-value=<%= "#{users_url}/#{@user.id.to_s}/messages" %>
+  data-pagination-page-value="<%= 2 %>">
+    <div data-controller="animation">
+      <div id="user-messages" class="waits-for-turbo">
+        <% if messages.empty? %>
+          <%= render 'layouts/empty' %>
+        <%else%>
+          <% messages.each do |message| %>
+            <%= render message %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div data-pagination-target="scrollArea">
+      <div class="is-flex is-justify-content-center"></div>
+    </div>
+    <%= render 'layouts/pagination', arr: messages %>
+  </div>
+<% end %>

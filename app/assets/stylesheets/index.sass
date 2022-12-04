@@ -1,0 +1,207 @@
+@import "variables"
+
+.waits-for-turbo
+    pointer-events: none
+
+html
+    overflow-y: auto
+    scroll-behavior: smooth
+    &.noJS
+        .waits-for-turbo
+            pointer-events: auto
+
+body
+    font-family: cera, "Helvetica Neue", "Helvetica", "Arial", sans-serif
+    font-size: 1.2rem
+    font-weight: 400
+    background-color: $bg-color
+    min-height: 100vh
+
+.no-scroll
+    overflow-y: hidden
+
+.pusher
+    margin-top: $pusher-height-mobile
+    @media screen and (min-width: 768px)
+        margin-top: $pusher-height-tablet
+    @media screen and (min-width: 1023px)
+        margin-top: $pusher-height-desktop
+
+a
+    color: $dark
+
+.is-hover-red
+    font-weight: 600
+    &:hover
+        color: $red
+
+// navbar
+
+.navbar
+    background-color: $bg-color
+
+#logo
+    font-family: 'monoton', sans-serif
+    font-size: 2.5rem
+    @media screen and (max-width: 1023px)
+        // subtract burger icon width
+        margin-left: calc( 50vw - 52px)
+        transform: translateX(-50%)
+    @media screen and (max-width: 768px)
+        margin-left: 0
+        transform: none
+    a
+        color: $red
+#nav-left-wrapper
+    width: 100%
+
+.navbar-burger
+    margin-left: 0
+    place-self: center
+    span
+        border-radius: 2.5em
+        border-top: 2px solid
+        border-bottom: 1px solid
+        width: 20px
+
+.navbar-menu
+    justify-content: flex-end
+    &.is-active
+        background-color: $bg-color
+        @media screen and ( max-width: 1023px )
+            box-shadow: 0 50px 16px rgba(10,10,10,.1)
+    .navbar-start
+        .navbar-item
+            font-weight: 500
+            .icon
+                padding-bottom: 0.8px
+    .navbar-item
+        .buttons
+            @media screen and (max-width: 1023px)
+                justify-content: center
+
+            .button.is-primary
+                font-weight: bold
+        .navbar-link
+            &:hover
+                color: $dark
+            &:not(.is-arrowless)::after
+                border-color: $dark
+
+.navbar-item
+    &:hover:not(.is-active)
+        color: $red
+
+a.navbar-item
+    &:focus,&:focus-within,&:focus-visible
+        color: $red
+
+.dropdown
+    margin-top: 0
+
+// pagination buttons
+
+.pagination
+    a
+        background-color: $white
+
+// animate post image
+
+.card-image
+    figure
+        border-top-left-radius: .25rem
+        border-top-right-radius: .25rem
+        overflow: hidden
+    img
+        transition: all $fast
+    &:hover
+        img
+            transform: scale(1.1)
+
+// new post button
+
+.button.is-circular
+    padding: 0
+    border: 0
+    border-radius: 50%
+    color: $white
+    font-size: 2.5rem
+
+#new-post
+    position: fixed
+    width: 75px
+    height: 75px
+    bottom: 0.75rem
+    right: 0.75rem
+    animation: heartBeat
+    animation-duration: 1.5s
+    @media (prefers-reduced-motion)
+        animation: none
+    @media screen and (max-width: 1023px)
+        right: 50%
+        transform: translateX(50%)
+        animation: none
+    @media screen and (max-width: 768px)
+        bottom: 0
+        right: 0
+        transform: translateX(0)
+        width: 100vw
+        height: 60px
+        border-radius: 0
+        animation: none
+
+// modal
+
+.modal-content
+    width: 350px
+    p
+        font-size: 1.1em
+
+// user profile
+
+.tabs
+    li.is-active a
+        color: $red
+        border-bottom-color: $red
+
+#user-edit
+    span
+        i
+            color: $dark
+            &:hover, &:active
+                color: $red
+    label
+        line-height: 1.2
+    .columns.is-desktop
+        @media screen and (min-width: 1024px)
+            display: block
+
+// spinner based on https://cssloaders.github.io/
+
+.spinner
+    width: 16px
+    height: 16px
+    border-radius: 50%
+    background-color: #b32557
+    box-shadow: 32px 0 #b32557, -32px 0 #b32557
+    position: relative
+    animation: flash 0.5s ease-out infinite alternate
+
+@keyframes flash
+    0%
+        background-color: $red
+        box-shadow: 32px 0 $red, -32px 0 #b32557
+
+    50%
+        background-color: #b32557
+        box-shadow: 32px 0 $red, -32px 0 $red
+
+    100%
+        background-color: $red
+        box-shadow: 32px 0 #b32557, -32px 0 $red
+
+//
+.dogebox
+    width: 100%
+    img
+        max-width: 350px

@@ -1,0 +1,1 @@
+module MessagesHelper; end

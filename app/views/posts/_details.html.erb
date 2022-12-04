@@ -1,0 +1,32 @@
+<% if @post.caption? %>
+  <p class="mb-0">
+    <span class="has-text-weight-bold">
+      Caption:
+    </span>
+    <span>
+      <%= @post.caption %>
+    </span>
+  </p>
+<% end %>
+<p class="mb-0 has-text-weight-bold">
+  <span>
+    Submitted by:
+  </span>
+  <span>
+    <%= link_to post.user.username, user_path(@post.user) %>
+  </span>
+</p>
+<p class="mb-0">
+  <span class="has-text-weight-bold">
+    Created:</span>
+  <span>
+    <%= post.created_at.to_formatted_s(:short) %>
+  </span>
+</p>
+<p class="mb-0">
+  <span class="has-text-weight-bold">
+    Last edited:</span>
+  <span>
+    <%= post.updated_at.to_formatted_s(:short) %>
+  </span>
+</p>

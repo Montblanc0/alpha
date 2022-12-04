@@ -1,0 +1,13 @@
+<div class="container has-text-centered">
+  <%= image_tag @post.image_url %>
+</div>
+<%= turbo_frame_tag dom_id(@post, "content") do %>
+  <%= render 'edit_form', post: @post %>
+<% end %>
+<div class="buttons is-centered mt-4">
+  <%=
+   link_to_unless(request.referrer.nil?, "Back", :back, class: "button is-pretty") do
+     link_to("Back", posts_url, class: "button is-pretty")
+   end 
+   %>
+</div>

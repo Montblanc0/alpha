@@ -1,0 +1,33 @@
+<div class="message">
+  <% if notice %>
+    <div class="flash message is-primary" style="display: none" data-controller="flash" data-flash-timeout-id-value="undefined">
+      <div class="message-header">
+        <p>Success!</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <%= notice %>
+      </div>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="flash message is-danger" style="display: none" data-controller="flash">
+      <div class="message-header">
+        <p>Oops!</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <%= alert %>
+        <% if defined? obj %>
+          <% if obj.errors.any? %>
+            <ul>
+              <% obj.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

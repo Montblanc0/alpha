@@ -1,0 +1,68 @@
+<%= form_with(model: post, class: "column is-narrow", id: "post_form", autocomplete: 'off') do |form| %>
+
+  <div data-controller="posts-form">
+
+    <div class="tabs is-centered is-boxed mb-6">
+      <ul>
+        <% Post.upload_types.keys.each do |upload_type| %>
+          <li class="<%= upload_type == post.upload_type ? 'is-active' : '' %> waits-for-turbo">
+            <a>
+              <%= form.radio_button :upload_type, upload_type, data: {posts_form_target: "radio_#{upload_type}", action: "change->posts-form#switch", turbo_frame: :upload_field }, class: "radio is-hidden", autocomplete: "off" %>
+              <%= form.label "#{:upload_type}_#{upload_type}", upload_type.upcase %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="field mb-2">
+      <%= turbo_frame_tag :upload_field do %>
+        <% if post.storage? %>
+          <div class="file has-name is-boxed has-text-centered  is-justify-content-center">
+            <%= form.label :image, class: "is-hidden" %>
+            <label class="file-label">
+              <%= form.file_field :image, data: {posts_form_target: "image", action: "change->posts-form#displayFilePreview", input_field: '' }, class: "file-input is-expanded", accept: "image/*" %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+              <span class="file-name" data-posts-form-target="filename"></span>
+            </label>
+          </div>
+        <% elsif post.url? %>
+          <%= form.label "Remote address", class: "label" %>
+          <div class="control">
+            <%= form.text_field :remote_image_url, data: {posts_form_target: "url", action: "blur->posts-form#displayUrlPreview", input_field: '' }, class: "input is-expanded", placeholder: 'http://linktoyourpicture.jpg' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="field mb-2" id="preview-container" data-posts-form-target="previewContainer" style="display: none;">
+      <label class="label">Preview</label>
+      <turbo-frame id="preview" class="column is-flex is-justify-content-center">
+        <img src="<%= post.image.current_path.to_s %>" id="img_preview" class="image" data-posts-form-target="preview" loading="lazy">
+      </turbo-frame>
+    </div>
+    <div class="field">
+      <%= form.label :caption, class: :label %>
+      <%= form.text_field :caption, data: {posts_form_target: "caption" }, class: 'input', placeholder: "Describe your picture" %>
+      <p>
+        <span class="tag">Optional</span>
+      </p>
+    </div>
+    <div class="buttons is-centered mt-5">
+      <%= form.button "Switch Upload Type", formaction: new_post_path, formmethod: :get, class: "button is-hidden", data: {posts_form_target: 'switch'} %>
+
+      <%= form.submit "Post!", class: "button is-pretty is-yellow", data: {posts_form_target: 'submit'}, disabled: true %>
+    </div>
+    <script>
+      // Waits for controller
+      document.querySelector('.buttons input[type="submit"]').disabled = true;
+    </script>
+    <%# Uncomment below to enable image caching %>
+    <%# <%= form.hidden_field :image_cache, data: { posts_form_target: 'cache' } %>
+  </div>
+<% end %>

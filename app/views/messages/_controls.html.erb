@@ -1,0 +1,29 @@
+<% if message.user == current_user %>
+  <div class="level-right">
+
+    <%= link_to edit_message_path(message), class: 'navbar-item is-mobile-button is-hidden-desktop', data: {'turbo-frame': dom_id(message, "content") } do %>
+      <span class="icon is-small">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </span>
+    <% end %>
+    <%= link_to "messages/#{message.id}/prompt", class: 'navbar-item is-mobile-button is-hidden-desktop', data: {turbo_stream: 'get'} do %>
+      <span class="icon is-small">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </span>
+    <% end %>
+
+    <div class="navbar-item has-dropdown is-hoverable is-hidden-touch">
+      <a class="navbar-link is-arrowless">
+        <span class="icon is-small">
+          <i class="fa-solid fa-ellipsis"></i>
+        </span>
+      </a>
+      <div class="navbar-dropdown is-boxed is-right">
+        <%= link_to "Edit", edit_message_path(message), class: 'navbar-item', data: {'turbo-frame': dom_id(message, "content") } %>
+
+        <%= link_to "Delete", "messages/#{message.id}/prompt", data: {"turbo-stream": :get}, class: 'navbar-item is-delete' %>
+      </div>
+    </div>
+
+  </div>
+<% end %>

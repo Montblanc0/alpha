@@ -1,0 +1,6 @@
+<div class ="columns is-multiline is-mobile is-flex-direction-column is-vcentered">
+  <%= turbo_frame_tag 'user_login_frame' do %>
+    <%= render 'form' %>
+  <% end %>
+  <p class="is-size-6">No account? <%= link_to 'Sign up', signup_path, class: 'is-hover-red' %> for free.</p>
+</div>

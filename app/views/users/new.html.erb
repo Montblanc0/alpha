@@ -1,0 +1,6 @@
+<div class="columns is-mobile is-multiline is-vcentered is-flex-direction-column">
+  <%= turbo_frame_tag 'turbo-frame-signup' do %>
+    <%= render "form", user: @user %>
+  <% end %>
+  <p class="is-size-6">Already have an account? <%= link_to 'Login', login_path, class: 'is-hover-red' %>.</p>
+</div>

@@ -1,0 +1,20 @@
+<%= turbo_frame_tag 'user-content' do %>
+  <div data-controller="pagination" data-pagination-url-value=<%= "#{users_url}/#{@user.id.to_s}/posts" %>
+  data-pagination-page-value="<%= 2 %>" >
+    <div data-controller="animation">
+      <div id="user-posts" class="columns is-multiline">
+        <% if posts.empty? %>
+          <%= render 'layouts/empty' %>
+        <%else%>
+          <% posts.each do |post| %>
+            <%= render 'posts/card', post: %>
+          <% end %>
+        <% end %>
+        <div data-pagination-target="scrollArea">
+          <div class="is-flex is-justify-content-center"></div>
+        </div>
+      </div>
+      <%= render 'layouts/pagination', arr: posts %>
+    </div>
+  </div>
+<% end %>

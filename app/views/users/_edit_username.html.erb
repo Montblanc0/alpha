@@ -1,0 +1,19 @@
+<%= turbo_frame_tag 'user-edit' do %>
+  <%= form_with(model: user, class: "column is-narrow", autocomplete: 'off') do |form| %>
+
+    <div class="field">
+      <%= form.label :username, 'New Username', class: 'label' %>
+      <div class="control">
+        <%= form.text_field :username, class: 'input', placeholder: 'Pick a name with no spaces', minlength: 4, pattern: '^(?!.* ).{1,}$', required: true %>
+      </div>
+    </div>
+
+    <div class="field mt-4">
+      <div class="control buttons is-centered">
+        <%= link_to 'Cancel', edit_user_path, class: 'button is-pretty' %>
+        <%= form.submit 'Confirm', class: 'button is-pretty is-green' %>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>

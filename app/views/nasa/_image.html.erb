@@ -1,0 +1,21 @@
+<turbo-frame id="nasaPreview" class="columns is-multiline is-centered is-mobile">
+  <div class="column">
+    <h3 class="has-text-centered is-size-2-tablet is-size-4-mobile mb-2 p-3"><%= caption %></h3>
+    <img src=<%= url %> id="img_preview" class="image is-fullwidth" loading="lazy">
+    <%= form_with(model: Post.new, url: :posts, autocomplete: 'off') do |f| %>
+      <%= f.hidden_field :remote_image_url, value: url %>
+      <%= f.hidden_field :caption, value: caption %>
+
+      <div class="buttons is-centered mt-4">
+        <button type="submit" class="button is-pretty is-green" name="commit" data-disable-with="Posting...">
+          <span class="icon is-small">
+            <i class="fa-solid fa-share"></i>
+          </span>
+          <span>Share this picture!</span>
+        </button>
+      </div>
+
+    <% end %>
+    <p class="has-text-justified p-3"><%= explanation %></p>
+  </div>
+</turbo-frame>

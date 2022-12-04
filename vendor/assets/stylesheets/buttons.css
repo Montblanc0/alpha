@@ -1,0 +1,94 @@
+.button.is-pretty {
+    font-family: inherit;
+    border-width: 0.125em;
+    border-style: solid;
+    border-radius: 0.75em;
+    border-color: #0f0e17;
+    box-shadow: 0 0.375em 0 #0f0e17;
+    user-select: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0 32px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-color: unset;
+    color: #0f0e17;
+    font-weight: 600;
+}
+
+.button.is-pretty:hover {
+    background: #c3c6d1;
+}
+
+.button.is-pretty.is-big {
+    min-width: 3rem;
+    min-height: 1.5rem;
+    font-size: 2em;
+}
+
+.button.is-pretty:active,
+.button.is-pretty.active {
+    top: 0.375em;
+    box-shadow: none;
+    background: #c3c6d1;
+    text-decoration: none;
+}
+
+.button.is-yellow {
+    background-color: #ffd43b
+}
+
+.button.is-yellow:hover,
+.button.is-yellow:active,
+.button.is-yellow.active {
+    background-color: #fab005;
+}
+
+.button.is-red {
+    background-color: #e53170;
+    color: #fff
+}
+
+.button.is-red:hover,
+.button.is-red:active,
+.button.is-red.active {
+    color: #fff;
+    background-color: #b32557
+}
+
+
+.button.is-green {
+    background-color: #00D19D;
+}
+
+.button.is-green:hover,
+.button.is-green:active,
+.button.is-green.active {
+    background-color: #008563;
+}
+
+.button.is-blue {
+    background-color: #3da9fc
+}
+
+
+.button.is-blue:hover,
+.button.is-blue:active,
+.button.is-blue.active {
+    background-color: #2C64E6
+}
+
+
+.button.is-pretty[disabled] {
+    background-color: #6E7385;
+}
+
+.button[disabled].is-pretty:hover,
+.button[disabled].is-pretty:active,
+.button[disabled].is-pretty.active {
+    background-color: #6E7385;
+    top: 0;
+    box-shadow: 0 0.375em 0 #0f0e17;
+
+}

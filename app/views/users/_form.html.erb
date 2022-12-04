@@ -1,0 +1,47 @@
+<%= form_with(model: user, class: "column is-narrow", autocomplete: 'off') do |form| %>
+  <h1 class="title has-text-centered">Create an account</h1>
+  <div class="column is-narrow">
+    <div class="field">
+      <div class="control">
+        <%= form.label :username, 'Username', class: 'label' %>
+        <%= form.text_field :username, class: 'input', placeholder: 'Pick a name with no spaces' %>
+      </div>
+      <% if user.errors.messages_for(:username).length > 0 %>
+        <% user.errors.messages_for(:username).each do |error| %>
+          <p class="field mb-0">
+            <span class="tag is-danger">Username <%= error %></span>
+          </p>
+        <% end %>
+      <%end%>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= form.label :password, 'Password', class: 'label' %>
+        <%= form.password_field :password, class: 'input', placeholder: '8 characters minimum' %>
+      </div>
+      <% if user.errors.messages_for(:password).length > 0 %>
+        <% user.errors.messages_for(:password).each do |error| %>
+          <p class="field mb-0">
+            <span class="tag is-danger">Password <%= error %></span>
+          </p>
+        <% end %>
+      <%end%>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= form.label :password_confirmation, 'Repeat Password', class: 'label' %>
+        <%= form.password_field :password_confirmation, class: 'input', placeholder: 'Repeat your password' %>
+      </div>
+      <% if user.errors.messages_for(:password_confirmation).length > 0 %>
+        <% user.errors.messages_for(:password_confirmation).each do |error| %>
+          <p class="field mb-0">
+            <span class="tag is-danger">Repeated password <%= error %></span>
+          </p>
+        <% end %>
+      <%end%>
+    </div>
+    <div class="control buttons is-centered">
+      <%= form.submit 'Sign Up!', class: 'button mt-2 is-pretty is-green' %>
+    </div>
+  </div>
+<% end %>

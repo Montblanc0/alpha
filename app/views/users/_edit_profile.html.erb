@@ -1,0 +1,47 @@
+<div class="columns is-multiline is-centered is-mobile">
+
+  <div class="column columns is-narrow is-desktop has-text-right">
+    <span class="column has-text-weight-bold">Username</span>
+    <span class="column has-text-weight-bold">Password</span>
+  </div>
+
+  <div class="column columns is-narrow is-desktop has-text-left">
+    <div class="column">
+      <span><%= @user %></span>
+      <span class="icon">
+        <%= link_to "#{users_url}/#{@user.id}/edit_username", data: {turbo_frame: 'user-edit'} do %>
+          <i class="fa-solid fa-edit"></i>
+        <%end%>
+      </span>
+    </div>
+    <div class="column">
+      <span>&#42;&#42;&#42;&#42;&#42;</span>
+      <span class="icon">
+        <%= link_to "#{users_url}/#{@user.id}/edit_password", data: {turbo_frame: 'user-edit'} do %>
+          <i class="fa-solid fa-edit"></i>
+        <%end%>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container is-max-desktop">
+  <div class="message is-dark">
+    <div class="message-header">
+
+      <p>Danger zone</p>
+      <span class="">
+        <span class="icon">
+          <i class="fa-solid fa-skull-crossbones has-text-white"></i>
+        </span>
+      </span>
+    </div>
+    <div class="message-body">
+      Deleting your account is <strong>permanent</strong> and will also destroy all of your <strong>posts</strong> and <strong>messages</strong>. Use the button below only if you understand <strong>you will not be able to recover your data</strong>.
+
+      <div class="buttons is-centered mt-4">
+        <%= link_to "Delete account", "#{@user.id}/prompt", data: {"turbo-stream": :get}, class: 'button is-pretty is-red' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= turbo_frame_tag 'modal' %>

@@ -1,0 +1,9 @@
+<%= render @message %>
+
+<div class="buttons is-centered mt-4">
+  <%=
+   link_to_unless(request.referrer.nil?, "Back", :back, class: "button is-pretty") do
+     link_to("Back", messages_url, class: "button is-pretty")
+   end 
+   %>
+</div>

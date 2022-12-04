@@ -1,0 +1,17 @@
+<%= form_with(model: message, class: "column is-narrow", id: "message-form", autocomplete: 'off', data: {controller: 'messages'}) do |form| %>
+  <div class="field columns is-mobile is-centered">
+    <div class="control">
+      <%= form.text_area :content, maxlength: 255, cols: 40, rows: 5, id: "content", class: "textarea", data: {messages_target: "content"}, autocomplete: 'off' %>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-centered">
+    <div class="control">
+      <button class="button is-yellow is-pretty has-text-weight-bold is-hidden" data-messages-target="send" id="send" data-action="click->messages#submit:prevent">Send!</button>
+      <%= form.submit "Send!", class: "button is-yellow is-pretty has-text-weight-bold", id: "submit", data: { messages_target: "submit" } %>
+      <script>
+        // waits for controller
+        submit.disabled = true;
+      </script>
+    </div>
+  </div>
+<% end %>
