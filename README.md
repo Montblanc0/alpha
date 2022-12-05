@@ -25,11 +25,10 @@ The website is divided into three main sections: [Posts](#posts), [Messages](#me
 ### Posts
 
 This page shows a **live feed** of latest pictures posted by registered users. The `+` button takes users to the new post form, where they can choose to upload a file from their **storage** or from a **remote URL**. The [`carrierwave gem`](https://github.com/carrierwaveuploader/carrierwave) is configured to create a smaller resolution version which is stored on the server along with the original picture. New posts are broadcasted to the `/posts` path via a Turbo Stream.
-Clicking on a post card will trigger the `posts#show` action which renders a page with a full resolution image and post details.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/645917/205456089-32dd7943-fb14-4bac-9ad6-cfb9196755e4.gif"></img></p>
 
-If the post is owned by a logged-in user, buttons to **edit** and **delete** will also be available.
+Clicking on a post card will trigger the `posts#show` action which renders a page with a full resolution image and post details. If the post is owned by a logged-in user, buttons to **edit** and **delete** will also be available.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/645917/205456445-b00a57c4-e559-4eeb-bbcd-8f10dbfccbad.gif"></img></p>
 
