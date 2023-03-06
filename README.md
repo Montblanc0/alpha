@@ -17,7 +17,6 @@ This project was built with [Ruby on Rails](https://rubyonrails.org/) v 7.0.4.2,
 - Added client-side and server-side file size validation (2 Megabytes per file maximum)
 - Stimulus controllers refactoring
 <br><br>
-<p align="center"><a href="https://github.com/Montblanc0/alpha/compare/master...experimental">👉  Compare with master</a></p>
 <p align="center"><a href="#development-setup">💻   Jump to Setup</a></p>
 
 ## Overview
