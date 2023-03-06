@@ -1,0 +1,16 @@
+<%= form_with(model: @post, method: :patch, class: "column is-narrow", id: 'edit_form', autocomplete: 'off') do |form| %>
+  <div class="field">
+    <label class="label">Caption:</label>
+    <div class="control">
+      <%= form.text_field :caption, placeholder: "Describe your picture (optional)", class: "input is-extended"%>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-centered">
+    <div class="control">
+      <%= link_to "Cancel", @post, class: "button is-pretty", data: {turbo_frame: dom_id(@post, 'content')} %>
+    </div>
+    <div class="control">
+      <%= form.submit "Update", class: "button is-green is-pretty has-text-weight-bold" %>
+    </div>
+  </div>
+<% end %>

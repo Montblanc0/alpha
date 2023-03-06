@@ -1,0 +1,13 @@
+<turbo-frame id="nasaPreview" class="columns is-multiline is-centered">
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <div class="column">
+    <h3 class="has-text-centered is-size-2-tablet is-size-4-mobile mb-2 p-3"><%= caption %></h3>
+    <div class="iframeContainer">
+      <iframe frameborder="0" allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      src=<%= url + (url.include?("?") ? "&" : "?") + "autoplay=1" %> >
+      </iframe>
+    </div>
+    <p class="has-text-justified mt-2 p-3"><%= explanation %></p>
+  </div>
+</turbo-frame>

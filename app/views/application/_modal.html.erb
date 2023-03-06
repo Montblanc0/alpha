@@ -1,0 +1,18 @@
+<turbo-frame id="modal">
+  <div id="modal-js-example" class="modal is-active" data-controller="modal" data-modal-target="modal">
+
+    <div class="modal-background" data-modal-target="background"></div>
+
+    <div class="modal-content">
+      <div class="box has-text-centered">
+        <p>Are you sure you want to <strong>delete</strong> this <%= obj.class.to_s.downcase %>?</p>
+        <div class="buttons is-centered mt-4">
+          <%= link_to 'Cancel', '', class: 'button is-pretty', data: {action: 'click->modal#hideModal' } %>
+          <%= link_to 'YES', obj, data: {turbo_method: :delete, action: 'click->modal#hideModal' }, class: 'button is-pretty is-red' %>
+        </div>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" data-action="click->modal#hideModal"></button>
+  </div>
+</turbo-frame>

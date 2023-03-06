@@ -1,0 +1,47 @@
+<div id="nasa-wrapper" class="container columns is-centered is-multiline is-mobile" data-controller="nasa">
+
+  <div id="nasa-container" class="column">
+    <div class="bg-animation">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+      <div id="stars4"></div>
+    </div>
+
+    <div class="columns is-centered is-multiline is-vcentered is-mobile">
+      <div class="section column">
+        <div class="container" id="nasa-preview-container" data-nasa-target="preview">
+          <turbo-frame id='nasaPreview'>
+            <%= form_tag nasa_path do %>
+              <div class="columns is-multiline is-centered is-mobile">
+                <p class="fancy has-text-centered is-size-1-tablet is-size-2-mobile">DISCOVER NASA'S ASTRONOMY PICTURE OF THE DAY</p>
+                <%= text_field_tag :url, nil, data: {nasa_target: "url"}, class: "input is-expanded is-hidden" %>
+              </div>
+              <div class="field">
+                <%= text_field_tag :caption, nil, data: {nasa_target: "caption" }, class: 'input is-hidden' %>
+              </div>
+              <div class="field">
+                <%= text_field_tag :explanation, nil, data: {nasa_target: "explanation" }, class: 'p is-hidden' %>
+              </div>
+              <div class="field">
+                <%= text_field_tag :media_type, nil, data: {nasa_target: "media" }, class: 'p is-hidden' %>
+              </div>
+              <div class="buttons is-centered">
+                <button id="goNasa" class="button is-pretty is-yellow is-big animate__animated animate__tada waits-for-turbo" data-nasa-target="go" data-action="click->nasa#nasa:prevent">
+                  <span class="icon is-small">
+                    <i class="fa-solid fa-rocket"></i>
+                  </span>
+                  <span>GO!</span>
+                </button>
+                <%= submit_tag 'Submit', class: 'is-hidden', data: {nasa_target: 'submit'} %>
+              </div>
+            <%end%>
+          </turbo-frame>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

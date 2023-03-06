@@ -1,0 +1,30 @@
+<%= form_tag sessions_path, class: "column is-narrow", data: {controller: "session"} do %>
+  <h1 class="title has-text-centered">User Login</h1>
+  <div class="column is-narrow">
+    <div class="field" data-session-target="username_field">
+      <div class="control">
+        <%= label_tag :username, 'Username', class: 'label'  %>
+        <%= text_field_tag :username, nil, class: 'input', placeholder: 'Enter your username', minlength: 4, pattern: '^(?!.* ).{1,}$', data: {session_target: 'username'} %>
+      </div>
+      <p class="field mb-0"  style="display: none;">
+        <span class="tag is-danger">Username cannot be blank</span>
+      </p>
+    </div>
+    <div class="field" data-session-target="password_field">
+      <div class="control">
+        <%= label_tag :password, 'Password', class: 'label' %>
+        <%= password_field_tag :password, nil, class: 'input', placeholder: 'Enter your password', minlength: 8, pattern: '^(?!.* ).{1,}$', data: {session_target: 'password'} %>
+      </div>
+      <p class="field mb-0" style="display: none;">
+        <span class="tag is-danger">Password cannot be blank</span>
+      </p>
+    </div>
+    <div class="control buttons is-centered">
+      <button class="button is-pretty is-green mt-2" data-action="click->session#validate:event" data-session-target="login">Login</button>
+      <%= submit_tag "Login", class: 'is-hidden', data: {session_target: 'submit'} %>
+      <script>
+        document.querySelector('[data-session-target="login"]').disabled = true;
+      </script>
+    </div>
+  </div>
+<% end %>

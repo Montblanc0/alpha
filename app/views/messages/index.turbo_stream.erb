@@ -1,0 +1,10 @@
+<%= turbo_stream.remove "spinner" %>
+<%= turbo_stream.append "messages" do %>
+  <% @messages.each do |message| %>
+    <%= render message %>
+  <% end %>
+
+  <% if @messages.page(@page.to_i + 1).out_of_range? %>
+    <span class="is-hidden" data-pagination-target="noRecords"></span>
+  <% end %>
+<% end %>

@@ -1,0 +1,47 @@
+@import "variables"
+
+textarea, .textarea
+    resize: none
+
+#preview
+    max-width: 720px
+    border: 5px dashed $dark
+
+input
+    &:autofill
+        background: inherit
+
+.file-label
+    max-width: 247.1px
+
+.field_with_errors
+    input, label.file-label
+        border: 2px solid $red
+        background-color: #FEECF0
+        animation: shakeX
+        animation-duration: 0.7s
+    p
+        display: block !important
+
+#post_form
+    .tabs
+        a
+            background-color: $bg-color
+            padding: 0
+            &:not(.is-active)
+                border-bottom-color: #dbdbdb
+
+            label
+                padding: .5em 1em
+                cursor: pointer
+
+.columns:not(.is-desktop).is-responsive-form
+    @media screen and (min-width: 769px)
+        display: block
+        margin: auto
+        .field
+            margin: auto
+        .field:not(#preview-container)
+            max-width: 500px
+        #preview-container
+            width: fit-content

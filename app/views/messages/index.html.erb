@@ -1,0 +1,21 @@
+<%= turbo_stream_from "messages" %>
+<div id="message-form-container" class="columns is-centered">
+  <%= render "form", message: Message.new %>
+</div>
+<div data-controller="pagination" data-pagination-url-value="<%= messages_url %>"
+  data-pagination-page-value="<%= 2 %>">
+  <turbo-frame id="messages" data-controller="animation" class="waits-for-turbo">
+    <% if @messages.empty? %>
+      <%= render 'layouts/empty' %>
+    <% else %>
+      <% @messages.each do |message| %>
+        <%= render message %>
+      <% end %>
+    <% end %>
+  </turbo-frame>
+  <div data-pagination-target="scrollArea">
+    <div class="is-flex is-justify-content-center"></div>
+  </div>
+  <%= render 'layouts/pagination', arr: @messages %>
+</div>
+<%= turbo_frame_tag 'modal' %>

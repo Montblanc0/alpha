@@ -1,0 +1,18 @@
+<div id="<%= dom_id message %>" class="box msg-box">
+  <article class="media">
+    <div class="media-content">
+
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <strong><%=link_to message.user, message.user %></strong><%= sanitize("&nbsp;&bull;&nbsp;")%><%= link_to message.updated_at.to_formatted_s(:short), message, class: 'subtitle is-6'%>
+        </div>
+        <%= turbo_frame_tag dom_id(message, "controls") do %>
+          <%= render 'messages/controls', message: %>
+        <%end%>
+      </nav>
+      <%= turbo_frame_tag dom_id(message, "content"), class: "content" do %>
+        <%= render 'content', message: %>
+      <% end %>
+    </div>
+  </article>
+</div>

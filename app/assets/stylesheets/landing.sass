@@ -1,0 +1,225 @@
+@import 'variables'
+
+@mixin vp-visible-height
+    height: $touch-visible-vp
+    @media screen and (min-width: 1023px)
+        height: $desktop-visible-vp
+
+$fade-in-left: transform ease-in-out 0.7s, filter ease-in-out 0.7s
+
+// unsupported
+// html:has(.landing)
+//      overflow-y: hidden
+
+.landing
+    position: fixed
+    top: $touch-nav-height
+    left: 0
+    width: 100vw
+    scroll-snap-type: y mandatory
+    overflow-y: scroll
+    scroll-behavior: smooth
+    @include vp-visible-height
+    @media screen and (min-width: 1023px)
+        top: $desktop-nav-height
+    section
+        margin: 0
+        scroll-snap-align: start
+        color: $dark
+        position: relative
+        @include vp-visible-height
+        article
+            max-width: 960px
+            min-width: 100%
+            .is-animated
+                opacity: 1
+                transform: translate(0, 0)
+                transition: all $fast
+                transition-delay: 150ms
+                &.is-second
+                    transition-delay: 350ms
+                &.is-third
+                    transition-delay: 550ms
+                &.is-fourth
+                    transition-delay: 750ms
+                &.is-fifth
+                    transition-delay: 950ms
+                &.is-last
+                    transition-delay: 1.5s
+                &.hidden-landing
+                    opacity: 0
+                    transition-delay: 0s
+                    transition: all 0s
+                    &.leftToRight
+                        transform: translate(-40%, 0)
+                    &.bottomUp
+                        transform: translate(0, 75%)
+            @media(prefers-reduced-motion)
+                transition: none
+            @media screen and (min-width: 640px)
+                min-width: 640px
+        .card
+            overflow: hidden
+            img
+                max-width: 250px
+
+.logo
+    margin-bottom: 2rem
+
+section>article>.card
+    margin-top: .5 rem
+    // @media screen and (min-height: 770px)
+    //     margin-top: 2rem
+    // @media screen and (min-height: 852px)
+    //     margin-top: 3rem
+    @media screen and (min-height: 852px)
+        margin-top: 2rem
+    @media screen and (min-height: 960px)
+        margin-top: 3rem
+
+#site-name
+    font-weight: bold
+
+#city
+    position: relative
+    background: asset-url('City_by_geometrieva') no-repeat
+    background-position: center
+    height: 300px
+    width: 300px
+    @media screen and (min-width: 600px)
+        width: 600px
+    .subtitle
+        position: absolute
+        inset: 0
+        top: 55%
+        color: $white
+
+#heart-container
+    &.hidden-landing
+        #heart
+            animation: none
+    &:not(.hidden-landing)
+        #heart
+            animation: heartBeat
+            animation-duration: 2s
+            animation-delay: 2.5s
+
+#heart
+    font-size: 1.75rem
+    color: #D30001
+
+#rubyrails
+    background-color: #D30001
+    transition: .25s ease
+    width: 180px
+    height: 180px
+    border-radius: 100%
+    &:hover
+        background-color: #000
+    img
+        filter: invert(1)
+        width: 150px
+        transform: translateY(-25%)
+
+#bulma
+    filter: none
+    transition: .2s ease
+    &:hover
+        filter: drop-shadow(2px 2px 4px $dark)
+    img
+        max-width: 290px
+
+.bolt
+    fill: unset
+    transition: fill .25s ease
+
+.logo:hover .bolt
+    fill: $yellow
+
+.scrollTop
+    i
+        display: block
+        font-size: 1.75rem
+    @media screen and (max-height: 849px) and (min-width: 1024px)
+        bottom: 2rem !important
+        span
+            display: none
+        // &::before
+        //     display: inline-block
+        //     text-rendering: auto
+        //     -webkit-font-smoothing: antialiased
+        //     content: '\f102'
+        //     font: normal normal 900 1.75rem/1 "Font Awesome 6 Free"
+
+// Scroll button based on https://codepen.io/nxworld/pen/OyRrGy
+
+.scroll
+    position: absolute
+    bottom: 3.5rem
+    left: 50%
+    transform: translateX(-50%)
+    z-index: 2
+    @media screen and (max-height: 767px)
+        display: none
+    @media screen and (max-height: 849px) and (min-width: 1024px)
+        bottom: 0
+        a:not([href='#sec1'])
+            color: rgba(0, 0, 0, 0)
+    &:not(.scrollTop)
+        a
+            position: relative
+            padding-top: 60px
+            span
+                position: absolute
+                top: 0
+                left: 50%
+                width: 30px
+                height: 50px
+                margin-left: -15px
+                border: 2px solid $dark
+                border-radius: 50px
+                box-sizing: border-box
+                background-color: $bg-color
+                &::before
+                    position: absolute
+                    top: 10px
+                    left: 50%
+                    content: ''
+                    width: 6px
+                    height: 6px
+                    margin-left: -3px
+                    background-color: $dark
+                    border-radius: 100%
+                    -webkit-animation: sdb10 2s infinite
+                    animation: sdb10 2s infinite
+                    box-sizing: border-box
+
+@-webkit-keyframes sdb10
+  0% 
+    -webkit-transform: translate(0, 20px)
+    opacity: 0
+
+  40% 
+    opacity: 1
+
+  80% 
+    -webkit-transform: translate(0, 0)
+    opacity: 0
+
+  100% 
+    opacity: 0
+
+@keyframes sdb10
+    0%
+        transform: translate(0, 20px)
+        opacity: 0
+
+    40%
+        opacity: 1
+
+    80%
+        transform: translate(0, 0)
+        opacity: 0
+
+    100%
+        opacity: 0

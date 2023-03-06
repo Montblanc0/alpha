@@ -1,0 +1,35 @@
+@import "variables"
+
+.slideInLeft
+    animation: slideInLeft
+    animation-duration: 1s
+
+.level-right .navbar-item.has-dropdown
+    opacity: 0
+    pointer-events: none
+
+.box.msg-box:hover .level-right .navbar-item.has-dropdown
+    opacity: 100
+    pointer-events: auto
+    transition: 0.3s
+
+.level.is-mobile
+    max-height: 32px
+
+.level
+    min-height: 32px
+    .navbar-item
+        &.is-mobile-button
+            &:focus,&:focus-within,&:focus-visible
+                background-color: unset
+        &.is-delete
+            color: $red
+        &.is-delete:hover
+            color: $red
+        &.has-dropdown:hover
+            .navbar-link
+                background-color: $white
+                &:hover
+                    color: $dark
+                &:not(.is-arrowless)::after
+                    border-color: $dark
