@@ -74,3 +74,5 @@ yarn-debug.log*
 /public/alpha/*
 
 # End of https://www.toptal.com/developers/gitignore/api/rails
+
+/config/credentials/production.key
